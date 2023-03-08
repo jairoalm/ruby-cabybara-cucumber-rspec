@@ -5,11 +5,13 @@ end
 
 Dado('possuir um usuário {string}') do |user_type|    
     if user_type == 'existente'
-        @user = { email: 'potato@testezap.com', password: '123456&'}
+        @user = { email: 'standard_user', password: 'secret_sauce'}
     elsif user_type == 'sem_cadastro'
         @user = { email: 'semcadastro@testezap.com', password: '123'}
+    elsif user_type == 'existente_e-mail_invalido'
+        @user = { email: 'semcadastro@testezap.com', password: 'secret_sauce'}
     elsif user_type == 'existente_senha_invalida'
-        @user = { email: 'potato@testezap.com', password: '12345'}
+        @user = { email: 'standard_user', password: '12345'}
     end
 end
 
@@ -19,12 +21,12 @@ end
 
 Então('validar que o login foi realizado com sucesso') do
     @my_account_page = Pages::MyAccountPage.new
-    expect(@my_account_page).to have_btn_sign_out
+    expect(@my_account_page.header).to have_shopping_cart
 end
 
 Então('validar que o login não foi realizado') do   
     aggregate_failures do
-        expect(@autentication_page).to have.alert.error
-        expect(@autentication_page.alert_error.text).to have_content 'There is 1 error'
+        expect(@autentication_page).to have_alert_error
+        expect(@autentication_page.alert_error.text).to have_content 'Epic sadface: Username and password do not match any user in this service'
     end   
 end

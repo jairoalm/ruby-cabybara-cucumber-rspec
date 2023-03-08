@@ -1,2 +1,8 @@
 default: -p html --format pretty
 html: --format html --out=reports/report.html
+# Environments
+prd: ENVIRONMENT=prd
+hml: ENVIRONMENT=hml
+
+#Visual
+headless: HEADLESS=true

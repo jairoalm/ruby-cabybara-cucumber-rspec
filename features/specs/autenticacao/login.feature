@@ -20,13 +20,14 @@ Funcionalidade: Autenticação - Validar o Login no Ecommerce
         Então validar que o login foi realizado com sucesso
     @login_com_falha
     Esquema do Cenário: Validar a tentativa de autenticação de usuários pela tela de autenticação do Ecommerce
-        Dado possuir usuário "<tipo_usuario>"    
+        Dado possuir um usuário "<tipo_usuario>"    
         Quando realizar o login com e-mail na tela de autenticação
         Então validar que o login não foi realizado 
 
         Exemplos:
             |tipo_usuario|
             |sem_cadastro|
+            |existente_e-mail_invalido|
             |existente_senha_invalida|
     
     # Cenário: Validar a tentativa de login com usuário inexistente pela tela de autenticação do Ecommerce
