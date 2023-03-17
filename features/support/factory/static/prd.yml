@@ -1,0 +1,12 @@
+existente:
+  email: standard_user
+  password: secret_sauce        
+sem_cadastro:
+  email: semcadastro@testezap.com
+  password: 123    
+existente_e-mail_invalido:
+  email: semcadastro@testezap.com
+  password: secret_sauce  
+existente_senha_invalida:
+  email: standard_user
+  password: 12345

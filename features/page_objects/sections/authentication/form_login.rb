@@ -5,8 +5,8 @@ module Sections
         element :btn_login, '#login-button'
 
     def login_with(user)        
-        input_email.set user[:email]
-        input_password.set user[:password]
+        input_email.set user['email']
+        input_password.set user['password']
         btn_login.click
     end
 end

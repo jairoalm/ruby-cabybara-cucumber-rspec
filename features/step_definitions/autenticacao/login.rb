@@ -4,15 +4,18 @@ Dado('estar na página de autenticação') do
 end
 
 Dado('possuir um usuário {string}') do |user_type|    
-    if user_type == 'existente'
-        @user = { email: 'standard_user', password: 'secret_sauce'}
-    elsif user_type == 'sem_cadastro'
-        @user = { email: 'semcadastro@testezap.com', password: '123'}
-    elsif user_type == 'existente_e-mail_invalido'
-        @user = { email: 'semcadastro@testezap.com', password: 'secret_sauce'}
-    elsif user_type == 'existente_senha_invalida'
-        @user = { email: 'standard_user', password: '12345'}
-    end
+    @user = Factory::Static.get_static_data(user_type)
+    # @user = Factory::Dynamic.new_user
+    # binding.pry
+    # if user_type == 'existente'
+    #     @user = { email: 'standard_user', password: 'secret_sauce'}
+    # elsif user_type == 'sem_cadastro'
+    #     @user = { email: 'semcadastro@testezap.com', password: '123'}
+    # elsif user_type == 'existente_e-mail_invalido'
+    #     @user = { email: 'semcadastro@testezap.com', password: 'secret_sauce'}
+    # elsif user_type == 'existente_senha_invalida'
+    #     @user = { email: 'standard_user', password: '12345'}
+    # end
 end
 
 Quando('realizar o login com e-mail na tela de autenticação') do
